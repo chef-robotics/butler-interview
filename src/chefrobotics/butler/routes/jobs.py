@@ -213,7 +213,7 @@ def get_job(job_id: str) -> JobResponse:
 
 
 @jobs_router.put("/{job_id}/cancel")
-def get_job(job_id: str) -> JobResponse:
+def cancel_job(job_id: str) -> JobResponse:
     """
     Cancel a specific job by its ID
 

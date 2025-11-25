@@ -34,6 +34,8 @@ curl -X POST localhost:5042/jobs/ \
     "output_file": "/tmp/cmd.log"
   }]'
 
+# List all jobs
+curl -X GET localhost:5042/jobs
 
 # An example of getting the status of one job
 curl -X GET localhost:5042/jobs/862a1146-57b1-43f0-8593-28333ffe78cb
