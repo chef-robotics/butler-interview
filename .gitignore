@@ -1,0 +1,5 @@
+# Build artifacts for building locally
+/src/build/
+/src/dist/
+**/*.pyc
+__pycache__

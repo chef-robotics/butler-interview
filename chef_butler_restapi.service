@@ -1,0 +1,16 @@
+[Unit]
+Description=Chef Butler REST API
+
+[Service]
+User=chef
+Group=chef
+Environment=PYTHONUNBUFFERED=1
+EnvironmentFile=/etc/chef/deploy_config.env
+ExecStart=/opt/chef/bin/butler/server.py
+SyslogIdentifier=chef-butler-restapi
+StandardInput=tty
+StandardOutput=journal+console
+TTYPath=/dev/tty3
+
+[Install]
+WantedBy=multi-user.target

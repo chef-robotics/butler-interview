@@ -1,0 +1,13 @@
+[Unit]
+Description=Chef Butler Dispatcher
+
+[Service]
+User=chef
+Group=chef
+EnvironmentFile=/etc/chef/deploy_config.env
+ExecStart=/opt/chef/bin/butler/dispatcher.py
+SyslogIdentifier=chef-butler-dispatcher
+Environment=PYTHONUNBUFFERED=1
+
+[Install]
+WantedBy=multi-user.target
