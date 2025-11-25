@@ -224,7 +224,7 @@ def cancel_job(job_id: str) -> JobResponse:
         HTTPException(404): If job is not found
     """
 
-    def get_job_query(session: DbSession) -> JobResponse:
+    def cancel_job_transaction(session: DbSession) -> JobResponse:
         job = (
             session.query(ButlerJob).filter(ButlerJob.job_id == job_id).first()
         )
@@ -237,8 +237,7 @@ def cancel_job(job_id: str) -> JobResponse:
 
         return create_job_response(job, include_context=True)
 
-    return db_manager.execute_query(get_job_query)
-
+    return db_manager.execute_transaction(cancel_job_transaction)
 
 @jobs_router.get("")
 def get_jobs(

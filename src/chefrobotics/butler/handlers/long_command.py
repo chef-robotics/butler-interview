@@ -159,6 +159,10 @@ class LongCommandHandler(base.JobHandler):
             except Exception as e:
                 print(f"Failed to mark log file for upload: {e}")
 
+    def cancel(self):
+        # IMPLEMENT ME
+        pass
+
     def start(self) -> None:
         self._start()
 
