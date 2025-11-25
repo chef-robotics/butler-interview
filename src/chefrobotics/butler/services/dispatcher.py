@@ -34,7 +34,7 @@ MAX_JOB_QUEUE_SIZE = 1000
 BUTLER_API_URL = "http://localhost:5042"
 
 # Global state to track internet status
-_g_connected_to_internet = False
+_g_connected_to_internet = True
 
 
 def load_jobs_onto_queue() -> list:
@@ -127,14 +127,14 @@ def main(*args):
     sync_thread = threading.Thread(
         target=sync_jobs_periodically, args=(job_sync_stop_event,), daemon=False
     )
-    sync_thread.start()
-    print(f"Job sync thread started: {sync_thread.is_alive()}")
+    # sync_thread.start()
+    # print(f"Job sync thread started: {sync_thread.is_alive()}")
 
     try:
         # Always run dispatcher
         while True:
 
-            wait_for_internet_connection()
+            # wait_for_internet_connection()
 
             # Main loop to process jobs periodically as long as we're connected
             while _g_connected_to_internet:
@@ -223,12 +223,12 @@ def main(*args):
                 except Exception as e:
                     print(traceback.format_exc())
 
-    except (KeyboardInterrupt, SystemExit):
+    except ( SystemExit):
         print("Shutdown requested - Stopping job sync thread")
 
     finally:
-        job_sync_stop_event.set()
-        sync_thread.join()
+        # job_sync_stop_event.set()
+        # sync_thread.join()
         print("Background thread terminated. Bye!")
 
 

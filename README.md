@@ -11,7 +11,7 @@ It's automatic, through `pantry`
 ### Local Testing
 
 ```
-uv venv --python 3.7
+uv venv --python 3.8
 source .venv/bin/activate
 uv pip install -e src
 
